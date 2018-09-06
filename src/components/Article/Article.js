@@ -1,11 +1,15 @@
 import React, { Component } from 'react';
+import CommentList from './CommentList';
 
 export default class Article extends Component {
   constructor(props) {
     super(props);
+
     this.state = {
-      isOpen: false
+      isOpen: false,
+      isOpenComments: false
     };
+
     this.toggleArticle = this.toggleArticle.bind(this);
   }
 
@@ -15,14 +19,36 @@ export default class Article extends Component {
     });
   }
 
+  toggleComments = () => {
+    this.setState({
+      isOpenComments: !this.state.isOpenComments
+    });
+  };
+
   render() {
-    let article = this.state.isOpen ? <article>{this.props.article.text}</article> : null;
-    // let commentList = ;
+    let commentList =
+      this.state.isOpenComments && this.props.article.comments
+        ? <CommentList comments={this.props.article.comments}/>
+        : null;
+
+    let commentButtonText = this.state.isOpenComments ? "Close" : "Open";
+
+    let articleElem =
+      <div>
+        <article>{this.props.article.text}</article>
+        <button className="btn btn-sm btn-default"
+                onClick={this.toggleComments}>{commentButtonText}</button>
+        {commentList}
+      </div>;
+
+    let article = this.state.isOpen ? articleElem : null;
     let buttonText = this.state.isOpen ? "Close" : "Open";
+
     return (
       <div className="article">
         <h2>{this.props.article.title}</h2>
-        <button className="btn btn-sm btn-primary" onClick={this.toggleArticle}>{buttonText}</button>
+        <button className="btn btn-sm btn-primary"
+                onClick={this.toggleArticle}>{buttonText}</button>
         {article}
       </div>
     );
