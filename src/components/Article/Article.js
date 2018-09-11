@@ -6,18 +6,17 @@ export default class Article extends Component {
     super(props);
 
     this.state = {
-      isOpen: false,
       isOpenComments: false
     };
 
-    this.toggleArticle = this.toggleArticle.bind(this);
+    // this.toggleArticle = this.toggleArticle.bind(this);
   }
 
-  toggleArticle() {
+  /*toggleArticle() {
     this.setState({
       isOpen: !this.state.isOpen
     });
-  }
+  }*/
 
   toggleComments = () => {
     this.setState({
@@ -58,14 +57,14 @@ export default class Article extends Component {
         {commentList}
       </div>;
 
-    let article = this.state.isOpen ? articleElem : null;
-    let buttonText = this.state.isOpen ? "Close" : "Open";
+    let article = this.props.isOpen ? articleElem : null;
+    let buttonText = this.props.isOpen ? "Close" : "Open";
 
     return (
       <div className="article">
         <h2>{this.props.article.title}</h2>
         <button className="btn btn-sm btn-primary"
-                onClick={this.toggleArticle}>{buttonText}</button>
+                onClick={this.props.toggleOpen}>{buttonText}</button>
         {article}
       </div>
     );
