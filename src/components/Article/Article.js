@@ -25,7 +25,24 @@ export default class Article extends Component {
     });
   };
 
+  componentWillReceiveProps(nextProps) {
+    console.log(`nextProps: ${nextProps}, this.props: ${this.props}`);
+  }
+
+  componentWillMount() {
+    console.log("will");
+  }
+
+  componentDidMount() {
+    console.log("did");
+  }
+
+  setContainerRef = (ref) => {
+    this.container = ref;
+  };
+
   render() {
+    console.log("render");
     let commentList =
       this.state.isOpenComments && this.props.article.comments
         ? <CommentList comments={this.props.article.comments}/>
@@ -34,7 +51,7 @@ export default class Article extends Component {
     let commentButtonText = this.state.isOpenComments ? "Close" : "Open";
 
     let articleElem =
-      <div>
+      <div ref={this.setContainerRef}>
         <article>{this.props.article.text}</article>
         <button className="btn btn-sm btn-default"
                 onClick={this.toggleComments}>{commentButtonText}</button>
