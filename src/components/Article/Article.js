@@ -16,9 +16,9 @@ class Article extends Component {
   render() {
     const {article, isOpen, toggleOpen} = this.props;
     return (
-      <div>
+      <div className="article">
         <h3>{article.title}</h3>
-        <button onClick={toggleOpen}>
+        <button className="btn btn-sm btn-primary" onClick={toggleOpen}>
           {isOpen ? "close" : "open"}
         </button>
         {this.getBody(article, isOpen)}

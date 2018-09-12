@@ -8,7 +8,7 @@ class CommentList extends Component {
     if (!isOpen) return null;
     if (!comments.length) return <p>No comments yet</p>;
     return (
-      <ul>
+      <ul className="list-group">
         {comments.map(comment => <li key={comment.id}><Comment comment={comment}/></li>)}
       </ul>
     );
