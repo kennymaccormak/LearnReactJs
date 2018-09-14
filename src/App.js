@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
+import Select from 'react-select';
+
 import ArticleList from './components/Article/ArticleList';
 import UserForm from './components/UserForm/UserForm';
 import { articles } from './mock/fixtures';
-import Select from 'react-select';
 
 class App extends Component {
   state = {
