@@ -3,3 +3,8 @@ body {
   padding: 0;
   font-family: "Segoe UI", sans-serif;
 }
+
+.app-select {
+  margin-bottom: 20px;
+  margin-top: 10px;
+}
