@@ -1,8 +1,12 @@
 import React, { Component } from 'react';
 import Comment from './Comment';
-import toggleOpen from '../../decorators/toggleOpen'
+import toggleOpen from '../../decorators/toggleOpen';
+import AddCommentForm from '../Article/AddCommentForm';
 
 class CommentList extends Component {
+  state = {
+    showCommentForm: false
+  }
   getBody() {
     const {comments, isOpen} = this.props;
     if (!isOpen) return null;
@@ -12,14 +16,16 @@ class CommentList extends Component {
         {comments.map(comment => <li key={comment.id}><Comment comment={comment}/></li>)}
       </ul>
     );
-  }
+  }  
 
   render() {
     const text = this.props.isOpen ? "hide comments" : "show comments";
     return (
       <div>
-        <button onClick={this.props.toggleOpen}>{text}</button>
+        <button className='btn btn-sm btn-defoult' onClick={this.props.toggleOpen}>{text}</button>
         {this.getBody()}
+        <button className='btn btn-sm btn-defoult mr-1' onClick={() => { this.setState({showCommentForm: !this.state.showCommentForm}) }}>add comment</button>
+        {(this.state.showCommentForm) ? <AddCommentForm /> : null}
       </div>
     );
   }
