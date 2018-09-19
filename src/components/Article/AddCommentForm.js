@@ -41,6 +41,24 @@ class AddCommentForm extends Component {
     this.setState(newState);
   };
 
+  submitForm = ev => {
+    const { username, commentText } = this.state;
+    if (
+      username.length >= 5 &&
+      username.length <= 15 &&
+      username.length !== 0 &&
+      commentText.length >= 20 &&
+      commentText.length <= 50 &&
+      commentText.length !== 0
+    ) {
+      alert(`${username}, thx for your comment`);
+      this.setState({
+        username: '',
+        commentText: ''
+      });
+    }
+  };
+
   render() {
     return (
       <form className="form-group">
@@ -57,7 +75,11 @@ class AddCommentForm extends Component {
           value={this.state.commentText}
           onChange={this.validateTextLenth}
         />
-        <button className="btn btn-sm btn-success" type="button">
+        <button
+          className="btn btn-sm btn-success"
+          onClick={this.submitForm}
+          type="button"
+        >
           Send
         </button>
       </form>
