@@ -11,37 +11,34 @@ class AddCommentForm extends Component {
     const value = target.value;
     const length = value.length;
 
+    let lowLimit = 0;
+    let hightLimit = 0;
+
+    let newState = {};
+
     switch (target.className.indexOf('user-name')) {
       case -1:
-        if (length < 20 || length > 50) {
-          target.style.boxShadow = '0 0 0 0.2rem red';
-          target.style.borderColor = 'red';
-        } else {
-          target.style.boxShadow = '';
-          target.style.borderColor = '';
-        }
-        this.setState({
-          commentText: value
-        });
+        lowLimit = 20;
+        hightLimit = 50;
+        newState.commentText = value;
         break;
+
       default:
-        if (length < 5 || length > 15) {
-          target.style.boxShadow = '0 0 0 0.2rem red';
-          target.style.borderColor = 'red';
-        } else {
-          target.style.boxShadow = '';
-          target.style.borderColor = '';
-        }
-        this.setState({
-          username: value
-        });
+        lowLimit = 5;
+        hightLimit = 15;
+        newState.username = value;
         break;
     }
 
-    if (length === 0) {
+    if ((length < lowLimit || length > hightLimit) && length !== 0) {
+      target.style.boxShadow = '0 0 0 0.2rem red';
+      target.style.borderColor = 'red';
+    } else {
       target.style.boxShadow = '';
       target.style.borderColor = '';
     }
+
+    this.setState(newState);
   };
 
   render() {
