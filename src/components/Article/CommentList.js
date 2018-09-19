@@ -22,9 +22,9 @@ class CommentList extends Component {
     const text = this.props.isOpen ? "hide comments" : "show comments";
     return (
       <div>
-        <button className='btn btn-sm btn-defoult' onClick={this.props.toggleOpen}>{text}</button>
+        <button className='btn btn-sm btn-defoult m-3' onClick={this.props.toggleOpen}>{text}</button>
         {this.getBody()}
-        <button className='btn btn-sm btn-defoult mr-1' onClick={() => { this.setState({showCommentForm: !this.state.showCommentForm}) }}>add comment</button>
+        <button className='btn btn-sm btn-defoult m-3' onClick={() => { this.setState({showCommentForm: !this.state.showCommentForm}) }}>add comment</button>
         {(this.state.showCommentForm) ? <AddCommentForm /> : null}
       </div>
     );
