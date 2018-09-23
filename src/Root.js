@@ -6,10 +6,10 @@ import { Provider } from "react-redux";
 
 import PropTypes from "prop-types";
 
-const Root = props => {
+const Root = () => {
   return (
     <Provider store={store}>
-      <App {...props} />
+      <App />
     </Provider>
   );
 };

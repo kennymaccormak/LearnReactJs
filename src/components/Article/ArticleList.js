@@ -1,4 +1,7 @@
 import React, { Component } from 'react';
+
+import {connect} from "react-redux";
+
 import Article from './Article';
 import accordion from '../../decorators/accordion';
 
@@ -20,4 +23,6 @@ class ArticleList extends Component {
   }
 }
 
-export default accordion(ArticleList);
+export default connect(state => ({
+  articles: state.articles
+}))(accordion(ArticleList));
