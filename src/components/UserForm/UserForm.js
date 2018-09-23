@@ -1,12 +1,12 @@
-import React, { Component } from 'react';
+import React, { Component } from "react";
 
-import Select from 'react-select';
-import DayPicker, { DateUtils } from 'react-day-picker';
-import 'react-day-picker/lib/style.css';
+import Select from "react-select";
+import DayPicker, { DateUtils } from "react-day-picker";
+import "react-day-picker/lib/style.css";
 
 export default class UserForm extends Component {
   state = {
-    username: '',
+    username: "",
     selection: null,
     from: new Date(),
     to: new Date()
@@ -55,7 +55,7 @@ export default class UserForm extends Component {
           onDayClick={this.handleDayClick}
         />
         {dayRange}
-        Name:{' '}
+        Name:{" "}
         <input
           type="text"
           className="form-control"

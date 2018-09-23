@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 
 import ArticleList from "./components/Article/ArticleList";
-import UserForm from "./components/UserForm/UserForm";
+import Filters from "./components/Filters/";
 import Counter from "./components/Counter";
 
 // import { articles } from "./mock/fixtures";
@@ -13,7 +13,7 @@ class App extends Component {
     return (
       <div className="container">
         <Counter />
-        <UserForm articles={[]} />
+        <Filters />
         <ArticleList />
       </div>
     );
