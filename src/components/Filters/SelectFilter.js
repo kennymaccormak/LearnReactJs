@@ -1,9 +1,9 @@
-import React, { Component } from "react";
-import { connect } from "react-redux";
+import React, { Component } from 'react';
+import { connect } from 'react-redux';
 
-import Select from "react-select";
+import Select from 'react-select';
 
-import { changeSelection } from "../../AC";
+import { changeSelection } from '../../AC';
 
 class SelectFilter extends Component {
   handleChange = selected =>
@@ -20,7 +20,6 @@ class SelectFilter extends Component {
       <Select
         className="app-select"
         options={options}
-        value={selected}
         isMulti={true}
         onChange={this.handleChange}
       />
