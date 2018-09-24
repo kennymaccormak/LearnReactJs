@@ -3,8 +3,12 @@ import { connect } from "react-redux";
 import Article from "./Article";
 import accordion from "../../decorators/accordion";
 import { filtratedArticlesSelector } from "../../selectors";
+import { loadAllArticles } from "../../AC";
 
 class ArticleList extends Component {
+  componentDidMount() {
+    this.props.loadAllArticles();
+  }
   render() {
     let { articles, openItemId, toggleOpenItem } = this.props;
     const articleElements = articles.map(article => (
@@ -21,8 +25,13 @@ class ArticleList extends Component {
   }
 }
 
-export default connect(state => {
-  return {
-    articles: filtratedArticlesSelector(state)
-  };
-})(accordion(ArticleList));
+export default connect(
+  state => {
+    return {
+      articles: filtratedArticlesSelector(state)
+    };
+  },
+  {
+    loadAllArticles
+  }
+)(accordion(ArticleList));
