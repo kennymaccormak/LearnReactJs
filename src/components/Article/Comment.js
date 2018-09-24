@@ -1,6 +1,18 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
+import {connect} from 'react-redux';
 
-export default class Comment extends Component {
+
+class Comment extends Component {
+  static PropTypes = {
+    id: PropTypes.string.isRequired,
+    // from connect
+    comment: PropTypes.shape({
+      text: PropTypes.string.isRequired,
+      user: PropTypes.string.isRequired
+    })
+  }
+
   constructor(props) {
     super(props);
   }
@@ -14,3 +26,10 @@ export default class Comment extends Component {
     );
   }
 }
+
+export default connect((state, ownProps) => {
+  console.log(state.comments, ownProps);
+  return {
+    comment: state.comments.find(comment => comment.id === ownProps.id)
+  } 
+})(Comment);

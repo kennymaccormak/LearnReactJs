@@ -1,4 +1,4 @@
-import { articles as defaultArticles } from "../mock/fixtures";
+import { normalizedArticles as defaultArticles } from "../mock/fixtures";
 import { DELETE_ARTICLE } from "../constants";
 
 export default (articleState = defaultArticles, action) => {
