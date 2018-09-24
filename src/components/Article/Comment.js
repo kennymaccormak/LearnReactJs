@@ -1,17 +1,17 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import {connect} from 'react-redux';
-
+import { connect } from 'react-redux';
+import { commentSelectorFactory } from '../../selectors';
 
 class Comment extends Component {
-  static PropTypes = {
+  static propTypes = {
     id: PropTypes.string.isRequired,
     // from connect
     comment: PropTypes.shape({
       text: PropTypes.string.isRequired,
       user: PropTypes.string.isRequired
     })
-  }
+  };
 
   constructor(props) {
     super(props);
@@ -27,9 +27,13 @@ class Comment extends Component {
   }
 }
 
-export default connect((state, ownProps) => {
-  console.log(state.comments, ownProps);
-  return {
-    comment: state.comments.find(comment => comment.id === ownProps.id)
-  } 
-})(Comment);
+const mapStateToProps = () => {
+  const commentSelector = commentSelectorFactory();
+  return (state, ownProps) => {
+    return {
+      comment: commentSelector(state, ownProps)
+    }
+  };
+};
+
+export default connect(mapStateToProps)(Comment);

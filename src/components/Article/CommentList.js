@@ -14,9 +14,7 @@ class CommentList extends Component {
     return (
       <ul className="list-group">
         {comments.map(id => (
-          <li key={id}>
-            <Comment id={id} />
-          </li>
+          <Comment key={id} id={id} />
         ))}
       </ul>
     );
