@@ -1,9 +1,7 @@
 import React, { Component } from "react";
 import { CSSTransitionGroup } from "react-transition-group";
-
 import { connect } from "react-redux";
 import { deleteArticle } from "../../AC";
-
 import CommentList from "./CommentList";
 import "./article.css";
 
@@ -13,7 +11,7 @@ class Article extends Component {
     return (
       <section>
         {article.text}
-        <CommentList comments={article.comments} />
+        <CommentList article={article} />
       </section>
     );
   }

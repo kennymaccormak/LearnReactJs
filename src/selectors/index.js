@@ -1,4 +1,5 @@
 import { createSelector } from 'reselect';
+import {mapToArr} from '../helpers'
 
 const filtersGetter = state => state.filters;
 const articlesGetter = state => state.articles;
@@ -14,7 +15,7 @@ export const filtratedArticlesSelector = createSelector(
       dateRange: { from, to }
     } = filters;
 
-    return articles.filter(article => {
+    return mapToArr(articles).filter(article => {
       const published = Date.parse(article.date);
       return (
         (!selected.length || selected.includes(article.id)) &&

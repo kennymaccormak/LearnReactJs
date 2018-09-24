@@ -1,10 +1,8 @@
 import React, { Component } from "react";
-
 import { connect } from "react-redux";
-
 import Article from "./Article";
 import accordion from "../../decorators/accordion";
-import {filtratedArticlesSelector} from '../../selectors';
+import { filtratedArticlesSelector } from "../../selectors";
 
 class ArticleList extends Component {
   render() {
@@ -23,9 +21,8 @@ class ArticleList extends Component {
   }
 }
 
-export default connect((state) => {
-  
+export default connect(state => {
   return {
     articles: filtratedArticlesSelector(state)
-  }
+  };
 })(accordion(ArticleList));
