@@ -42,7 +42,7 @@ export function addComment(comment, articleId) {
   }
 }
 
-export function loadAllArticles(comment, articleId) {
+export function loadAllArticles() {
   return {
     type: LOAD_ARTICLES,
     callAPI: "/api/article"

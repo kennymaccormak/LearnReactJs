@@ -24,12 +24,12 @@
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject",
-    "api": "node simple_api/server.js"
+    "api": "node simple_api/server.js",
+    "dev": "npm start | npm run api"
   },
   "proxy": {
     "/api/": {
       "target": "http://localhost:3001"
     }
   }
-  
 }

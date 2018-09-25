@@ -1,14 +1,15 @@
-import React, { Component } from "react";
-import { connect } from "react-redux";
-import Article from "./Article";
-import accordion from "../../decorators/accordion";
-import { filtratedArticlesSelector } from "../../selectors";
-import { loadAllArticles } from "../../AC";
+import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import Article from './Article';
+import accordion from '../../decorators/accordion';
+import { filtratedArticlesSelector } from '../../selectors';
+import { loadAllArticles } from '../../AC';
 
 class ArticleList extends Component {
   componentDidMount() {
     this.props.loadAllArticles();
   }
+
   render() {
     let { articles, openItemId, toggleOpenItem } = this.props;
     const articleElements = articles.map(article => (
